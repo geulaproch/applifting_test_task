@@ -1,11 +1,14 @@
 import React from 'react';
 
 import './TopClickers.css';
+import TopClickersHeader from './TopClickersHeader';
+import TopClickersChart from './TopClickersChart';
 
 const TopClickers = () => {
     return (
         <div className='TopClickers'>
-            <span className='TopClickers-Title'>Top 10 Clickers</span>
+            <TopClickersHeader title='Top 10 Clickers'/>
+            <TopClickersChart/>
         </div>
     )
 };

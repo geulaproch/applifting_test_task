@@ -1,0 +1,17 @@
+.TopClickersHeader {
+    background: url('/img/top_chart.png');
+    width: 400px;
+    height: 80px;
+
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 24px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+    box-sizing: border-box;
+    padding: 16px 0 0 0;
+}

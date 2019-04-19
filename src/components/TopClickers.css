@@ -2,11 +2,5 @@
     display: flex;
     align-self: center;
 
-    margin: 32px 0 0 0;
-}
-
-.TopClickers-Title {
-    background: url('/img/top_chart.png');
-    width: 400px;
-    height: 80px;
+    margin: 48px 0 0 0;
 }
