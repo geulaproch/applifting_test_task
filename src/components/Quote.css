@@ -1,0 +1,20 @@
+.Quote {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    color: #000000;
+
+    font-style: italic;
+
+    max-width: 500px;
+}
+
+.Quote-Author {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+
+    box-sizing: border-box;
+    padding: 6px 0 0 0;
+}

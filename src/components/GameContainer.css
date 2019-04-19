@@ -1,0 +1,13 @@
+.GameContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 1050px;
+    min-width: 950px;
+
+    box-sizing: border-box;
+    padding: 32px 0;
+
+    background-color: #eeeeee;
+}

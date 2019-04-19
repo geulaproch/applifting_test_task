@@ -1,0 +1,18 @@
+.AppBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    box-sizing: border-box;
+    padding: 6px 0;
+
+    background-color: #2196f3;
+
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 24px;
+
+    max-width: 1050px;
+    min-width: 950px;
+}

@@ -1,0 +1,22 @@
+.GameField {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+
+    max-width: 500px;
+    min-width: 500px;
+
+    box-sizing: border-box;
+    margin: 32px;
+    padding: 16px;
+
+    border: 4px solid #2196f3;
+    border-radius: 6px;
+}
+
+.GameField-Header {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
