@@ -65,3 +65,4 @@ export default TeamPage;
 /*todo to check proper widths/height, to create more reusable components*/
 /*todo clicksamount - fixed data for now*/
 /*todo to make that PROKOP is BLUE*/
+/*todo implement router*/

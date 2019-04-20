@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
+import {Provider} from 'react-redux';
 
 import './App.css';
-import TeamPage from './pages/TeamPage';
 import AppBar from './components/AppBar';
+import MainPage from './pages/MainPage';
+import {store} from './State';
 
 const theme = createMuiTheme({
     palette: {
@@ -23,12 +25,14 @@ const theme = createMuiTheme({
 class App extends Component {
     render() {
         return (
-            <MuiThemeProvider theme={theme}>
-                <div className='App'>
-                    <AppBar title='stfuandclick.com'/>
-                    <TeamPage/>
-                </div>
-            </MuiThemeProvider>
+            <Provider store={store}>
+                <MuiThemeProvider theme={theme}>
+                    <div className='App'>
+                        <AppBar title='stfuandclick.com'/>
+                        <MainPage/>
+                    </div>
+                </MuiThemeProvider>
+            </Provider>
         );
     }
 }
