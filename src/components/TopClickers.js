@@ -7,7 +7,9 @@ import TopClickersChart from './TopClickersChart';
 const TopClickers = () => {
     return (
         <div className='TopClickers'>
-            <TopClickersHeader title='Top 10 Clickers'/>
+            <span className='TopClickers-Title'>
+                <TopClickersHeader title='Top 10 Clickers'/>
+            </span>
             <TopClickersChart/>
         </div>
     )

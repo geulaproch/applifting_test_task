@@ -1,6 +1,13 @@
 .TopClickers {
     display: flex;
+    flex-direction: column;
     align-self: center;
 
-    margin: 48px 0 0 0;
+    margin: 48px 0;
+}
+
+.TopClickers-Title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

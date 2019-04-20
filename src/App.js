@@ -10,6 +10,9 @@ const theme = createMuiTheme({
         primary: {
             main: '#2196f3',
         },
+        common: {
+            white: '#ffffff',
+        },
     },
     typography: {
         fontFamily: 'Roboto',

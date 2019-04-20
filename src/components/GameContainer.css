@@ -11,3 +11,9 @@
 
     background-color: #eeeeee;
 }
+
+.GameContainer-Note {
+    align-self: center;
+    color: #000000;
+    font-style: italic;
+}

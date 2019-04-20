@@ -3,19 +3,18 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import './GameFieldHeader.css';
-import Quote from './Quote';
 
 const GameFieldHeader = () => {
     return (
         <div className='GameFieldHeader'>
             <div>
-                <Quote text='Enter your team name:'/>
+                <span className='GameFieldHeader-TeamName'>Enter your team name:</span>
                 <TextField
                     id='outlined-name'
                     variant='outlined'
                     style={{
                         width: '200px',
-                        margin: '0 40px 0 0',
+                        margin: '6px 40px 0 0',
                     }}/>
             </div>
             <span className='GameField-Button'>

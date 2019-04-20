@@ -9,6 +9,7 @@ const GameField = () => {
         <div className='GameField'>
             <GameFieldHeader/>
             <TopClickers/>
+            <span className='GameField-Advice'>Want to be top? STFU and click!</span>
         </div>
     )
 };

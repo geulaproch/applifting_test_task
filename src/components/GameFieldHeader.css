@@ -4,3 +4,9 @@
     justify-items: center;
     align-items: center;
 }
+
+.GameFieldHeader-TeamName {
+    align-self: center;
+    color: #000000;
+    font-style: italic;
+}
