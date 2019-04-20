@@ -12,6 +12,7 @@ const GameFieldHeader = () => {
                 <TextField
                     id='outlined-name'
                     variant='outlined'
+                    label='Your mom'
                     style={{
                         width: '200px',
                         margin: '6px 40px 0 0',
@@ -35,3 +36,5 @@ const GameFieldHeader = () => {
 };
 
 export default GameFieldHeader;
+
+/*todo css in one style*/
