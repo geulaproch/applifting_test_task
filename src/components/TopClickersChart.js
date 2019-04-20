@@ -8,6 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import {TeamsState} from '../state/TeamsState';
+import {connect} from 'react-redux';
+
 const CustomTableCell = withStyles(theme => ({
     head: {
         backgroundColor: theme.palette.primary.main,
@@ -32,14 +35,7 @@ const styles = theme => ({
     },
 });
 
-let id = 0;
-
-function createData(player, clicks) {
-    id += 1;
-    return {id, player, clicks};
-}
-
-const resultsTable = [
+/*const resultsTable = [
     ['Applifting', 1002345],
     ['Filip', 996032],
     ['Mlask', 96843],
@@ -50,45 +46,78 @@ const resultsTable = [
     ['Martin', 22152],
     ['Borec', 13123],
     ['CSP', 5],
-];
+];*/
 
-let rows = [];
+/*let rows = [];*/
 
-function TopClickersChart(props) {
-    const {classes} = props;
+class TopClickersChart extends React.Component {
+    constructor(props) {
+        super(props);
 
-    for (let i = 0; i < resultsTable.length; i++) {
-        rows.push(createData(resultsTable[i][0], resultsTable[i][1]));
+        this.props.loadTeams();
     }
 
-    return (
-        <Paper className={classes.root}>
-            <Table className={classes.table}>
-                <TableHead>
-                    <TableRow>
-                        <CustomTableCell>Nr</CustomTableCell>
-                        <CustomTableCell>Team</CustomTableCell>
-                        <CustomTableCell>Clicks</CustomTableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map(row => (
-                        <TableRow className={classes.row} key={row.id}>
-                            <CustomTableCell component='th' scope='row'>
-                                {row.id}
-                            </CustomTableCell>
-                            <CustomTableCell>{row.player}</CustomTableCell>
-                            <CustomTableCell>{row.clicks}</CustomTableCell>
+    render() {
+        const {classes} = this.props;
+
+        let rows = this.state.teams.map((team, index) => {
+            return {
+                id: index,
+                team: team.team,
+                clicks: team.clicks,
+            }
+        });
+
+        /*function createData(player, clicks) {
+            id += 1;
+            return {id, player, clicks};
+        }
+
+        for (let i = 0; i < resultsTable.length; i++) {
+            rows.push(createData(resultsTable[i][0], resultsTable[i][1]));
+        }*/
+
+        return (
+            <Paper className={classes.root}>
+                <Table className={classes.table}>
+                    <TableHead>
+                        <TableRow>
+                            <CustomTableCell>Nr</CustomTableCell>
+                            <CustomTableCell>Team</CustomTableCell>
+                            <CustomTableCell>Clicks</CustomTableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </Paper>
-    );
+                    </TableHead>
+                    <TableBody>
+                        {rows.map(row => (
+                            <TableRow className={classes.row} key={row.id}>
+                                <CustomTableCell component='th' scope='row'>
+                                    {row.id}
+                                </CustomTableCell>
+                                <CustomTableCell>{row.player}</CustomTableCell>
+                                <CustomTableCell>{row.clicks}</CustomTableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </Paper>
+        )
+    }
 }
+
+/*function TopClickersChart(props) {
+
+
+    return (
+
+    );
+}*/
 
 TopClickersChart.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TopClickersChart);
+const mapDispatchToProps = {
+    loadTeams: TeamsState.ActionCreators.loadTeams,
+};
+
+export default connect(null, mapDispatchToProps)(withStyles(styles)(TopClickersChart));
