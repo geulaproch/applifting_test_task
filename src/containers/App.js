@@ -30,7 +30,7 @@ class App extends Component {
                 <MuiThemeProvider theme={theme}>
                     <div className='App'>
                         <AppBar title='stfuandclick.com'/>
-                        <TeamPage/>
+                        <MainPage/>
                     </div>
                 </MuiThemeProvider>
             </Provider>
