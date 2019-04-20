@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './GameField.css';
-import GameFieldHeader from './GameFieldHeader';
 import TopClickers from './TopClickers';
+import GameFieldHeader from './GameFieldHeader';
 
 const GameField = () => {
     return (

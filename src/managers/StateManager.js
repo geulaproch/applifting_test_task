@@ -1,7 +1,7 @@
 import {combineReducers, createStore} from 'redux';
 
-import {PlayerState} from './state/PlayerState';
-import {TeamsState} from './state/TeamsState';
+import {PlayerState} from '../state/PlayerState';
+import {TeamsState} from '../state/TeamsState';
 
 /*const State = {
     player: {

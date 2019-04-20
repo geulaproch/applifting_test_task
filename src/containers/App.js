@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
 import {Provider} from 'react-redux';
 
+import {store} from '../managers/StateManager';
+import AppBar from '../components/AppBar';
+import MainPage from '../pages/MainPage';
 import './App.css';
-import AppBar from './components/AppBar';
-import MainPage from './pages/MainPage';
-import {store} from './State';
+import TeamPage from '../pages/TeamPage';
 
 const theme = createMuiTheme({
     palette: {
@@ -29,7 +30,7 @@ class App extends Component {
                 <MuiThemeProvider theme={theme}>
                     <div className='App'>
                         <AppBar title='stfuandclick.com'/>
-                        <MainPage/>
+                        <TeamPage/>
                     </div>
                 </MuiThemeProvider>
             </Provider>
