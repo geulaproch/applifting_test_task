@@ -45,7 +45,7 @@ const TeamReducer = (currentState = null, action) => {
     }
 };
 
-const ClicksReducer = (currentState = null, action) => {
+const ClicksReducer = (currentState = 0, action) => {
     switch (action.type) {
         case ActionTypes.UPDATE_CLICKS:
             return action.amountOfClicks;
@@ -66,5 +66,6 @@ export const PlayerState = {
         assignSession,
         assignTeam,
         updateClicks,
-    }
+    },
+    ActionTypes,
 };

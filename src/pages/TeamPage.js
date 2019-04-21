@@ -1,10 +1,12 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import {connect} from 'react-redux';
 
 import './TeamPage.css';
 import ClicksAmount from '../components/ClicksAmount';
 import TopClickersChart from '../components/TopClickersChart';
+import {PlayerState} from '../state/PlayerState';
 
 const Applifting = <a href='http://applifting.cz'>Applifting</a>;
 
@@ -13,6 +15,8 @@ class TeamPage extends React.Component {
         super(props);
 
         const teamName = props.match.params.teamName;
+
+        props.assignTeam(teamName);
     }
 
     render() {
@@ -20,7 +24,7 @@ class TeamPage extends React.Component {
             <div className='TeamPage'>
             <span className='TeamPage-Title'>
                 Clicking for team&nbsp;
-                <span className='TeamPage-TeamName'>Prokop</span>
+                <span className='TeamPage-TeamName'>{this.props.teamName}</span>
             </span>
                 <div className='TeamPage-ShareLink'>
                     <span>Too lazy to click? Let your pals click for you:</span>
@@ -55,10 +59,10 @@ class TeamPage extends React.Component {
                     <div className='TeamPage-GameField-AmountOfClicks'>
                         <ClicksAmount
                             title='Your clicks:'
-                            amount='1024'/>
+                            amount={this.props.yourClicks}/>
                         <ClicksAmount
                             title='Team clicks:'
-                            amount='65535'/>
+                            amount={this.props.teamClicks}/>
                     </div>
 
                     <TopClickersChart/>
@@ -70,5 +74,26 @@ class TeamPage extends React.Component {
     }
 }
 
-export default TeamPage;
+const mapStateToProps = (state) => {
+    let clicksOfTeam;
+
+    const currentTeam = state.teams.find(team => team.team === state.player.team);
+
+    if (currentTeam === undefined) {
+        clicksOfTeam = 0;
+    } else {
+        clicksOfTeam = currentTeam.clicks;
+    }
+    return {
+        teamName: state.player.team,
+        yourClicks: state.player.clicks,
+        teamClicks: clicksOfTeam,
+    }
+};
+
+const mapDispatchToProps = {
+    assignTeam: PlayerState.ActionCreators.assignTeam,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TeamPage);
 
