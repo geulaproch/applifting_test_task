@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
-import {Provider} from 'react-redux';
+import {connect} from 'react-redux';
+import * as uuid from 'uuid';
+import {BrowserRouter} from 'react-router-dom';
+import {Route, Switch} from 'react-router';
 
-import {store} from '../managers/StateManager';
 import AppBar from '../components/AppBar';
 import MainPage from '../pages/MainPage';
 import './App.css';
+import {PlayerState} from '../state/PlayerState';
 import TeamPage from '../pages/TeamPage';
 
 const theme = createMuiTheme({
@@ -24,18 +27,31 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.props.assignSession(uuid.v4());
+    }
+
     render() {
         return (
-            <Provider store={store}>
+            <BrowserRouter>
                 <MuiThemeProvider theme={theme}>
                     <div className='App'>
                         <AppBar title='stfuandclick.com'/>
-                        <MainPage/>
+                        <Switch>
+                            <Route exact path='/' component={MainPage}/>
+                            <Route path='/:teamName' component={TeamPage}/>
+                        </Switch>
                     </div>
                 </MuiThemeProvider>
-            </Provider>
+            </BrowserRouter>
         );
     }
 }
 
-export default App;
+const mapDispatchToProps = {
+    assignSession: PlayerState.ActionCreators.assignSession,
+};
+
+export default connect(null, mapDispatchToProps)(App);

@@ -35,18 +35,18 @@ const styles = theme => ({
     },
 });
 
-/*const resultsTable = [
-    ['Applifting', 1002345],
-    ['Filip', 996032],
-    ['Mlask', 96843],
-    ['Jakub', 82552],
-    ['Prokop', 65535],
-    ['Zuzka', 60223],
-    ['Vráťa', 25005],
-    ['Martin', 22152],
-    ['Borec', 13123],
-    ['CSP', 5],
-];*/
+const resultsTable = [
+    {
+        order: 1,
+        team: 'Applifting',
+        clicks: 12456,
+    },
+    {
+        order: 2,
+        team: 'Filip',
+        clicks: 3435,
+    },
+];
 
 /*let rows = [];*/
 
@@ -54,28 +54,20 @@ class TopClickersChart extends React.Component {
     constructor(props) {
         super(props);
 
-        this.props.loadTeams();
+        this.props.loadTeams(resultsTable);
     }
 
     render() {
         const {classes} = this.props;
 
-        let rows = this.state.teams.map((team, index) => {
+        let rows = this.props.teams.map((team, index) => {
             return {
                 id: index,
+                order: team.order,
                 team: team.team,
                 clicks: team.clicks,
             }
         });
-
-        /*function createData(player, clicks) {
-            id += 1;
-            return {id, player, clicks};
-        }
-
-        for (let i = 0; i < resultsTable.length; i++) {
-            rows.push(createData(resultsTable[i][0], resultsTable[i][1]));
-        }*/
 
         return (
             <Paper className={classes.root}>
@@ -91,9 +83,9 @@ class TopClickersChart extends React.Component {
                         {rows.map(row => (
                             <TableRow className={classes.row} key={row.id}>
                                 <CustomTableCell component='th' scope='row'>
-                                    {row.id}
+                                    {row.order}
                                 </CustomTableCell>
-                                <CustomTableCell>{row.player}</CustomTableCell>
+                                <CustomTableCell>{row.team}</CustomTableCell>
                                 <CustomTableCell>{row.clicks}</CustomTableCell>
                             </TableRow>
                         ))}
@@ -104,20 +96,18 @@ class TopClickersChart extends React.Component {
     }
 }
 
-/*function TopClickersChart(props) {
-
-
-    return (
-
-    );
-}*/
-
 TopClickersChart.propTypes = {
     classes: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => {
+    return {
+        teams: state.teams,
+    }
 };
 
 const mapDispatchToProps = {
     loadTeams: TeamsState.ActionCreators.loadTeams,
 };
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(TopClickersChart));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(TopClickersChart));
