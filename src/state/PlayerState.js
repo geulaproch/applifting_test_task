@@ -28,10 +28,11 @@ const updateClicks = (amountOfClicks) => {
     }
 };
 
-const increment = (team) => {
+const increment = (team, session) => {
     return {
         type: ActionTypes.INCREMENT,
         team,
+        session,
     }
 };
 
@@ -57,8 +58,6 @@ const ClicksReducer = (currentState = 0, action) => {
     switch (action.type) {
         case ActionTypes.UPDATE_CLICKS:
             return action.amountOfClicks;
-        case ActionTypes.INCREMENT:
-            return currentState + 1;
         default:
             return currentState;
     }

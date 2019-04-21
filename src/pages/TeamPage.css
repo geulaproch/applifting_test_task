@@ -42,9 +42,6 @@
     flex-direction: column;
     align-self: center;
 
-    max-width: 500px;
-    min-width: 500px;
-
     box-sizing: border-box;
     margin: 32px 0;
     padding: 16px 0;

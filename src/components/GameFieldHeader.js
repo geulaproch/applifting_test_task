@@ -22,7 +22,7 @@ class GameFieldHeader extends React.Component {
     render() {
         return (
             <div className='GameFieldHeader'>
-                <div>
+                <div className='GameFieldHeader-TeamForm'>
                     <span className='GameFieldHeader-TeamName'>Enter your team name:</span>
                     <TextField
                         id='outlined-name'
@@ -35,11 +35,10 @@ class GameFieldHeader extends React.Component {
                             margin: '6px 40px 0 0',
                         }}/>
                 </div>
-                <span className='GameField-Button'>
+                <div className='GameField-Button'>
                     <Button
                         variant='fab'
                         color='primary'
-                        size='large'
                         href={`/${this.state.teamName}`}
                         style={{
                             width: '200px',
@@ -48,7 +47,7 @@ class GameFieldHeader extends React.Component {
                         }}>
                         Click!
                     </Button>
-                </span>
+                </div>
             </div>
         )
     }

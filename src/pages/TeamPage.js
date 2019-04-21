@@ -48,7 +48,7 @@ class TeamPage extends React.Component {
                             variant='fab'
                             color='primary'
                             size='large'
-                            onClick={() => this.props.increment(this.props.teamName)}
+                            onClick={() => this.props.increment()}
                             style={{
                                 width: '450px',
                                 fontSize: '32px',
@@ -89,12 +89,15 @@ const mapStateToProps = (state) => {
         teamName: state.player.team,
         yourClicks: state.player.clicks,
         teamClicks: clicksOfTeam,
+        session: state.player.session,
     }
 };
 
-const mapDispatchToProps = {
-    assignTeam: PlayerState.ActionCreators.assignTeam,
-    increment: PlayerState.ActionCreators.increment,
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        assignTeam: (team) => dispatch(PlayerState.ActionCreators.assignTeam(team)),
+        increment: () => dispatch(PlayerState.ActionCreators.increment(ownProps.teamName, ownProps.session)),
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamPage);

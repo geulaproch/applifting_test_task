@@ -2,12 +2,21 @@ import {PlayerState} from './PlayerState';
 
 const ActionTypes = {
     LOAD_TEAMS: 'Teams/LOAD_TEAMS',
+    UPDATE_TEAM_CLICKS: 'Teams/UPDATE_TEAM_CLICKS',
 };
 
 const loadTeams = (teams) => {
     return {
         type: ActionTypes.LOAD_TEAMS,
         teams,
+    }
+};
+
+const updateTeamClicks = (team, amountOfClicks) => {
+    return {
+        type: ActionTypes.UPDATE_TEAM_CLICKS,
+        team,
+        amountOfClicks,
     }
 };
 
@@ -46,15 +55,20 @@ const TeamsReducer = (currentState = [], action) => {
                 return currentState;
             }
 
-        case PlayerState.ActionTypes.INCREMENT:
-            let allTeams = [...currentState];
-            const currentTeamIndex = allTeams.findIndex(team => team.team === action.team);
 
-            allTeams[currentTeamIndex] = Object.assign({}, allTeams[currentTeamIndex], {
-                clicks: allTeams[currentTeamIndex].clicks + 1,
-            });
+        case ActionTypes.UPDATE_TEAM_CLICKS:
+            let allTeams = [...currentState];
+
+            const indexOfTeam = allTeams.findIndex(team => team.team === action.team);
+
+            if (indexOfTeam !== -1) {
+                allTeams[indexOfTeam] = Object.assign({}, allTeams[indexOfTeam], {
+                    clicks: action.amountOfClicks,
+                })
+            }
 
             return allTeams;
+
 
         default:
             return currentState;
@@ -65,5 +79,6 @@ export const TeamsState = {
     Reducer: TeamsReducer,
     ActionCreators: {
         loadTeams,
+        updateTeamClicks,
     }
 };

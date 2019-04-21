@@ -57,8 +57,6 @@ const resultsTable = [
     },
 ];
 
-/*let rows = [];*/
-
 class TopClickersChart extends React.Component {
     constructor(props) {
         super(props);
@@ -70,10 +68,16 @@ class TopClickersChart extends React.Component {
         const {classes} = this.props;
 
         let rows = this.props.teams.map((team, index) => {
+            let teamName = team.team;
+
+            if (teamName.length > 30) {
+                teamName = teamName.substring(0, 30) + '...';
+            }
+
             return {
                 id: index,
                 order: team.order,
-                team: team.team,
+                team: teamName,
                 clicks: team.clicks,
             }
         });

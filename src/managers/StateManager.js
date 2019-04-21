@@ -1,20 +1,13 @@
-import {combineReducers, createStore} from 'redux';
+import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
+import createSagaMiddleware from 'redux-saga'
 
 import {PlayerState} from '../state/PlayerState';
 import {TeamsState} from '../state/TeamsState';
+import rootSaga from '../sagas/rootSaga';
 
-/*const State = {
-    player: {
-        session: 'xxxx',
-        team: 'Applifting',
-        clicks: 5,
-    },
-    teams: [{
-        order: 1,
-        team: 'Applifting',
-        clicks: 17,
-    }],
-};*/
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const sagaMiddleware = createSagaMiddleware();
 
 const Reducer = combineReducers({
     player: PlayerState.Reducer,
@@ -23,5 +16,7 @@ const Reducer = combineReducers({
 
 export const store = createStore(
     Reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    composeEnhancers(applyMiddleware(sagaMiddleware))
 );
+
+sagaMiddleware.run(rootSaga);

@@ -1,4 +1,4 @@
-.GameContainer {
+.MainPage {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@
     margin: 0 0 32px 0;
 }
 
-.GameContainer-Note {
+.MainPage-Note {
     align-self: center;
     color: #000000;
     font-style: italic;
