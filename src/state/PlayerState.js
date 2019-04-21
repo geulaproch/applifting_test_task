@@ -4,6 +4,7 @@ const ActionTypes = {
     ASSIGN_SESSION: 'Player/ASSIGN_SESSION',
     ASSIGN_TEAM: 'Player/ASSIGN_TEAM',
     UPDATE_CLICKS: 'Player/UPDATE_CLICKS',
+    INCREMENT: 'Player/INCREMENT',
 };
 
 const assignSession = (session) => {
@@ -24,6 +25,13 @@ const updateClicks = (amountOfClicks) => {
     return {
         type: ActionTypes.UPDATE_CLICKS,
         amountOfClicks,
+    }
+};
+
+const increment = (team) => {
+    return {
+        type: ActionTypes.INCREMENT,
+        team,
     }
 };
 
@@ -49,6 +57,8 @@ const ClicksReducer = (currentState = 0, action) => {
     switch (action.type) {
         case ActionTypes.UPDATE_CLICKS:
             return action.amountOfClicks;
+        case ActionTypes.INCREMENT:
+            return currentState + 1;
         default:
             return currentState;
     }
@@ -66,6 +76,7 @@ export const PlayerState = {
         assignSession,
         assignTeam,
         updateClicks,
+        increment,
     },
     ActionTypes,
 };

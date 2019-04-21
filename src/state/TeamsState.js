@@ -20,7 +20,7 @@ const TeamsReducer = (currentState = [], action) => {
                 if (teams.find(existingTeam => existingTeam.team === incomingTeam.team) !== undefined) {
                     teams[teams.findIndex(existingTeam => existingTeam.team === incomingTeam.team)] = incomingTeam;
                 } else {
-                     teams.push(incomingTeam);
+                    teams.push(incomingTeam);
                 }
             });
 
@@ -46,6 +46,15 @@ const TeamsReducer = (currentState = [], action) => {
                 return currentState;
             }
 
+        case PlayerState.ActionTypes.INCREMENT:
+            let allTeams = [...currentState];
+            const currentTeamIndex = allTeams.findIndex(team => team.team === action.team);
+
+            allTeams[currentTeamIndex] = Object.assign({}, allTeams[currentTeamIndex], {
+                clicks: allTeams[currentTeamIndex].clicks + 1,
+            });
+
+            return allTeams;
 
         default:
             return currentState;
