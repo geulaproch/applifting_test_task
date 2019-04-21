@@ -33,6 +33,15 @@ const styles = theme => ({
             backgroundColor: theme.palette.background.default,
         },
     },
+    blueRow: {
+        backgroundColor: '#2196f3',
+        fontWeight: 600,
+        height: '80px',
+        '& > th, & > td': {
+            color: '#ffffff',
+            fontSize: '24px',
+        },
+    },
 });
 
 const resultsTable = [
@@ -80,15 +89,22 @@ class TopClickersChart extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map(row => (
-                            <TableRow className={classes.row} key={row.id}>
-                                <CustomTableCell component='th' scope='row'>
-                                    {row.order}
-                                </CustomTableCell>
-                                <CustomTableCell>{row.team}</CustomTableCell>
-                                <CustomTableCell>{row.clicks}</CustomTableCell>
-                            </TableRow>
-                        ))}
+                        {rows.map(row => {
+                            let rowStyle = classes.row;
+                            if (row.team === this.props.currentTeam) {
+                                rowStyle = classes.blueRow;
+                            }
+                            return (
+                                <TableRow className={rowStyle} key={row.id}>
+                                    <CustomTableCell component='th' scope='row'>
+                                        {row.order}
+                                    </CustomTableCell>
+                                    <CustomTableCell>{row.team}</CustomTableCell>
+                                    <CustomTableCell>{row.clicks}</CustomTableCell>
+                                </TableRow>
+                            )
+
+                        })}
                     </TableBody>
                 </Table>
             </Paper>
@@ -102,6 +118,7 @@ TopClickersChart.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
+        currentTeam: state.player.team,
         teams: state.teams,
     }
 };
