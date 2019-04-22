@@ -1,0 +1,19 @@
+.ClicksAmount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 32px;
+
+    line-height: 1.5;
+}
+
+.ClicksAmount-Title {
+    font-style: italic;
+}
+
+.ClicksAmount-Number {
+    color: #2196f3;
+    font-size: 48px;
+    font-weight: 600;
+}

@@ -44,24 +44,9 @@ const styles = theme => ({
     },
 });
 
-const resultsTable = [
-    {
-        order: 1,
-        team: 'Applifting',
-        clicks: 12456,
-    },
-    {
-        order: 2,
-        team: 'Filip',
-        clicks: 3435,
-    },
-];
-
 class TopClickersChart extends React.Component {
     constructor(props) {
         super(props);
-
-        this.props.loadTeams(resultsTable);
     }
 
     render() {

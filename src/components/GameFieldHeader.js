@@ -54,5 +54,3 @@ class GameFieldHeader extends React.Component {
 }
 
 export default GameFieldHeader;
-
-/*todo css in one style*/
