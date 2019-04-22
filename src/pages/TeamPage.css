@@ -1,78 +1,21 @@
 .TeamPage {
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    box-sizing: border-box;
-    padding: 32px;
-
-    background-color: #eeeeee;
+    justify-content: center;
 
     max-width: 1050px;
     min-width: 950px;
 
+    box-sizing: border-box;
+    padding: 32px 0;
+
+    background-color: #eeeeee;
+
     margin: 0 0 32px 0;
 }
 
-.TeamPage-Title {
-    display: flex;
-    flex-direction: row;
+.TeamPage-Note {
     align-self: center;
-
-    font-size: 48px;
-
-    box-sizing: border-box;
-    padding: 0 0 32px 0;
-}
-
-.TeamPage-TeamName {
-    font-weight: 600;
-}
-
-.TeamPage-ShareLink {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
-    font-style: italic;
-}
-
-.TeamPage-GameField {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-
-    box-sizing: border-box;
-    margin: 32px 0;
-    padding: 16px 0;
-
-    border: 4px solid #2196f3;
-    border-radius: 6px;
-
-    background-color: #ffffff;
-}
-
-.TeamPage-GameField-Button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.TeamPage-GameField-AmountOfClicks {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    margin: 32px 0;
-}
-
-.italic-text {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-
-    box-sizing: border-box;
-    padding: 32px 0 16px 0;
-
+    color: #000000;
     font-style: italic;
 }

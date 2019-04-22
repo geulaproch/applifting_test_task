@@ -1,7 +1,10 @@
 import React from 'react';
 
 import GameField from '../components/GameField';
-import Quote from '../components/Quote';
+import './MainPage.css';
+import MainPageHeader from '../components/MainPageHeader';
+import TopClickersHeader from '../components/TopClickersHeader';
+import Quote from '../components/common/Quote';
 
 const MainPage = () => {
     return (
@@ -9,8 +12,11 @@ const MainPage = () => {
             <Quote
                 text='It&#39;s is really simple, you just need to click as fast as you can.'
                 author='anonymous'/>
-            <GameField/>
-            <span className='MainPage-Note'>If you don't like this page, it's <a href='http://applifting.cz'>Applifting</a>'s fault!</span>
+            <GameField
+                header={MainPageHeader}
+                chartTitle={TopClickersHeader}/>
+            <span className='MainPage-Note'>If you don't like this page, it's <a
+                href='http://applifting.cz'>Applifting</a>'s fault!</span>
         </div>
     )
 };

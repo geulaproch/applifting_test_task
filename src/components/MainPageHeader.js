@@ -2,9 +2,9 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import './GameFieldHeader.css';
+import './MainPageHeader.css';
 
-class GameFieldHeader extends React.Component {
+class MainPageHeader extends React.Component {
     constructor(props) {
         super(props);
 
@@ -21,9 +21,9 @@ class GameFieldHeader extends React.Component {
 
     render() {
         return (
-            <div className='GameFieldHeader'>
-                <div className='GameFieldHeader-TeamForm'>
-                    <span className='GameFieldHeader-TeamName'>Enter your team name:</span>
+            <div className='MainPageHeader'>
+                <div className='MainPageHeader-TeamForm'>
+                    <span className='MainPageHeader-TeamName'>Enter your team name:</span>
                     <TextField
                         id='outlined-name'
                         variant='outlined'
@@ -35,7 +35,7 @@ class GameFieldHeader extends React.Component {
                             margin: '6px 40px 0 0',
                         }}/>
                 </div>
-                <div className='GameField-Button'>
+                <div className='MainPageHeader-Button'>
                     <Button
                         variant='fab'
                         color='primary'
@@ -53,4 +53,4 @@ class GameFieldHeader extends React.Component {
     }
 }
 
-export default GameFieldHeader;
+export default MainPageHeader;

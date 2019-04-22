@@ -2,10 +2,10 @@ import React from 'react';
 
 import './TopClickersHeader.css';
 
-const TopClickersHeader = ({title}) => {
+const TopClickersHeader = () => {
     return (
         <span className='TopClickersHeader'>
-            <span>{title}</span>
+            <span>Top 10 Clickers</span>
         </span>
 
     )
